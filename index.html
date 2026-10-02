@@ -4,10 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Expense &amp; Budget Visualizer</title>
+  <!-- Challenge 5: Apply saved theme before CSS loads to prevent flash -->
+  <script>
+    (function() {
+      const t = localStorage.getItem('expense_budget_visualizer_theme');
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="container">
+
+    <!-- Challenge 5: Theme Toggle Row -->
+    <div class="theme-toggle-row">
+      <button id="btn-theme-toggle" class="btn-theme-toggle" aria-label="Toggle dark mode">🌙 Dark Mode</button>
+    </div>
+
     <main>
 
       <!-- Balance Display -->
@@ -19,6 +32,12 @@
             <span id="balance-amount">0.00</span>
             <span id="balance-overflow" class="overflow-indicator" hidden>⚠ Display limit reached</span>
           </p>
+        </div>
+        <!-- Challenge 4: Spending Limit Controls -->
+        <div class="limit-controls">
+          <label for="spending-limit">Spending Limit:</label>
+          <input type="number" id="spending-limit" min="0" step="0.01" placeholder="Set limit..." class="limit-input">
+          <span id="limit-warning" class="limit-warning" hidden>⚠ Over limit!</span>
         </div>
       </section>
 
@@ -69,6 +88,12 @@
               <option value="Fun">Fun</option>
             </select>
             <span class="field-error" id="error-category" role="alert" aria-live="polite"></span>
+            <!-- Challenge 1: Custom Category Controls -->
+            <div class="custom-category-row" id="custom-category-row" hidden>
+              <input type="text" id="custom-category-input" placeholder="New category name" maxlength="30" autocomplete="off">
+              <button type="button" id="btn-add-category" class="btn-add-category">Add</button>
+            </div>
+            <button type="button" id="btn-toggle-custom-category" class="btn-toggle-custom-category">+ Custom category</button>
           </div>
 
           <button type="submit" class="btn-submit">Add Transaction</button>
@@ -79,6 +104,15 @@
       <!-- Transaction List -->
       <section id="transaction-section" aria-labelledby="transaction-heading">
         <h2 id="transaction-heading">Transactions</h2>
+        <!-- Challenge 3: Sort Controls -->
+        <div class="sort-controls" id="sort-controls">
+          <span class="sort-label">Sort:</span>
+          <button class="btn-sort active" data-sort="date-desc">Newest</button>
+          <button class="btn-sort" data-sort="date-asc">Oldest</button>
+          <button class="btn-sort" data-sort="amount-desc">Highest</button>
+          <button class="btn-sort" data-sort="amount-asc">Lowest</button>
+          <button class="btn-sort" data-sort="category">Category</button>
+        </div>
         <ul id="transaction-list" aria-label="Transaction history"></ul>
         <p id="transaction-empty" class="empty-state">No transactions recorded yet.</p>
       </section>
@@ -89,6 +123,13 @@
         <canvas id="spending-chart" role="img" aria-label="Spending distribution pie chart"></canvas>
         <p id="chart-empty" class="empty-state">No data available.</p>
         <p id="chart-error" class="chart-error" hidden>Chart could not be loaded.</p>
+      </section>
+
+      <!-- Challenge 2: Monthly Summary Section -->
+      <section id="summary-section" aria-labelledby="summary-heading">
+        <h2 id="summary-heading">Monthly Summary</h2>
+        <div id="monthly-summary-list" class="monthly-summary-list"></div>
+        <p id="summary-empty" class="empty-state">No transactions to summarize.</p>
       </section>
 
     </main>

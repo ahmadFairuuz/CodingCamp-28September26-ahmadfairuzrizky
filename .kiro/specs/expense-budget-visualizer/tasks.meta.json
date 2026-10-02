@@ -217,6 +217,178 @@
         "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
         "timestamp": 1790900469569
       }
+    ],
+    "8.1 Implement `renderTransactionList(transactions)`": [
+      {
+        "executionId": "a186c12f-4618-400b-a107-ca1956fd75ca",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900695107
+      },
+      {
+        "executionId": "a186c12f-4618-400b-a107-ca1956fd75ca",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900798737
+      }
+    ],
+    "8.3 Implement `renderBalance(transactions)`": [
+      {
+        "executionId": "a186c12f-4618-400b-a107-ca1956fd75ca",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900695920
+      },
+      {
+        "executionId": "a186c12f-4618-400b-a107-ca1956fd75ca",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900798989
+      }
+    ],
+    "8.6 Implement `renderChart(transactions)`": [
+      {
+        "executionId": "a186c12f-4618-400b-a107-ca1956fd75ca",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900803787
+      },
+      {
+        "executionId": "a186c12f-4618-400b-a107-ca1956fd75ca",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900808689
+      }
+    ],
+    "8.7 Implement `renderAll()`": [
+      {
+        "executionId": "a186c12f-4618-400b-a107-ca1956fd75ca",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900804265
+      },
+      {
+        "executionId": "a186c12f-4618-400b-a107-ca1956fd75ca",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900809016
+      }
+    ],
+    "8. JS — Render Functions": [
+      {
+        "executionId": "a186c12f-4618-400b-a107-ca1956fd75ca",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900809180
+      }
+    ],
+    "9. Checkpoint — core rendering complete": [
+      {
+        "executionId": "a186c12f-4618-400b-a107-ca1956fd75ca",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900814432
+      },
+      {
+        "executionId": "a186c12f-4618-400b-a107-ca1956fd75ca",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900822553
+      }
+    ],
+    "10.1 Implement `handleDeleteClick(event)` with event delegation": [
+      {
+        "executionId": "0c0b4707-072d-486b-94dd-9c2d4d50367b",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900919427
+      },
+      {
+        "executionId": "0c0b4707-072d-486b-94dd-9c2d4d50367b",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901023163
+      }
+    ],
+    "10.2 Complete `handleFormSubmit(event)` wiring": [
+      {
+        "executionId": "0c0b4707-072d-486b-94dd-9c2d4d50367b",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901023289
+      },
+      {
+        "executionId": "0c0b4707-072d-486b-94dd-9c2d4d50367b",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901027764
+      }
+    ],
+    "10.3 Implement `init()` and `DOMContentLoaded` bootstrap": [
+      {
+        "executionId": "0c0b4707-072d-486b-94dd-9c2d4d50367b",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901028301
+      },
+      {
+        "executionId": "0c0b4707-072d-486b-94dd-9c2d4d50367b",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901032839
+      }
+    ],
+    "10. JS — Event Handlers and Initialization": [
+      {
+        "executionId": "0c0b4707-072d-486b-94dd-9c2d4d50367b",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901033049
+      }
+    ],
+    "11.1 Handle `localStorage` write failure (quota exceeded)": [
+      {
+        "executionId": "0c0b4707-072d-486b-94dd-9c2d4d50367b",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901038013
+      },
+      {
+        "executionId": "f6f7f196-8399-4ca8-ba28-381918f18404",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901508995
+      }
+    ],
+    "12.1 Set up Vitest (or Jest) as a dev-only test runner": [
+      {
+        "executionId": "0c0b4707-072d-486b-94dd-9c2d4d50367b",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901038488
+      },
+      {
+        "executionId": "f6f7f196-8399-4ca8-ba28-381918f18404",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901519184
+      }
+    ],
+    "11.2 Handle Chart.js CDN load failure": [
+      {
+        "executionId": "f6f7f196-8399-4ca8-ba28-381918f18404",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901509273
+      },
+      {
+        "executionId": "f6f7f196-8399-4ca8-ba28-381918f18404",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901513971
+      }
+    ],
+    "11. Error handling edge cases": [
+      {
+        "executionId": "f6f7f196-8399-4ca8-ba28-381918f18404",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901514174
+      }
+    ],
+    "12. Testing setup and unit tests": [
+      {
+        "executionId": "f6f7f196-8399-4ca8-ba28-381918f18404",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901519412
+      }
+    ],
+    "13. Final checkpoint — all tests and smoke checks": [
+      {
+        "executionId": "f6f7f196-8399-4ca8-ba28-381918f18404",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901523996
+      },
+      {
+        "executionId": "f6f7f196-8399-4ca8-ba28-381918f18404",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790901533832
+      }
     ]
   }
 }

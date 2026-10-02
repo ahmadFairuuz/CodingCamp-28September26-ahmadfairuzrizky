@@ -150,8 +150,8 @@ Tasks are ordered to build incrementally: scaffolding → HTML structure → CSS
     - **Validates: Requirements 4.1**
     - Use fast-check to generate non-empty transaction arrays; assert all percentages ≥ 0 and sum within 0.1 of 100
 
-- [ ] 8. JS — Render Functions
-  - [ ] 8.1 Implement `renderTransactionList(transactions)`
+- [x] 8. JS — Render Functions
+  - [x] 8.1 Implement `renderTransactionList(transactions)`
     - Sort a copy of the array in reverse-chronological order (`createdAt` descending)
     - Clear and repopulate the `<ul>` with one `<li>` per transaction showing name (truncated), amount (formatted), category, and a delete `<button data-id="...">`
     - Show the empty-state placeholder when the array is empty
@@ -162,7 +162,7 @@ Tasks are ordered to build incrementally: scaffolding → HTML structure → CSS
     - **Validates: Requirements 2.3**
     - Use fast-check to generate arrays with shuffled `createdAt` timestamps; assert adjacent pairs satisfy `list[i].createdAt >= list[i+1].createdAt`
 
-  - [ ] 8.3 Implement `renderBalance(transactions)`
+  - [x] 8.3 Implement `renderBalance(transactions)`
     - Sum all transaction amounts
     - If sum > `MAX_AMOUNT`, display `"999,999,999.99"` with an overflow indicator element; otherwise display `formatCurrency(sum)`
     - Show `"0.00"` when array is empty
@@ -178,33 +178,33 @@ Tasks are ordered to build incrementally: scaffolding → HTML structure → CSS
     - **Validates: Requirements 3.6**
     - Use fast-check to generate transaction arrays whose sum exceeds 999,999,999.99; assert display shows capped value and overflow indicator
 
-  - [ ] 8.6 Implement `renderChart(transactions)`
+  - [x] 8.6 Implement `renderChart(transactions)`
     - Call `computeChartData(transactions)`
     - If `isEmpty`, hide canvas and show pie-chart placeholder message
     - Otherwise show canvas, call `chartInstance.destroy()` if an instance exists, then create new `Chart` instance with doughnut/pie type, labels, data, and percentage display in tooltips/labels
     - Guard against `Chart` being undefined (CDN failure — see Task 10)
     - _Requirements: 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7_
 
-  - [ ] 8.7 Implement `renderAll()`
+  - [x] 8.7 Implement `renderAll()`
     - Calls `renderTransactionList(transactions)`, `renderBalance(transactions)`, `renderChart(transactions)` in sequence
     - _Requirements: 1.6, 2.4, 3.2, 3.3, 4.3_
 
-- [ ] 9. Checkpoint — core rendering complete
+- [x] 9. Checkpoint — core rendering complete
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 10. JS — Event Handlers and Initialization
-  - [ ] 10.1 Implement `handleDeleteClick(event)` with event delegation
+- [x] 10. JS — Event Handlers and Initialization
+  - [x] 10.1 Implement `handleDeleteClick(event)` with event delegation
     - Attach a single `click` listener on the `Transaction_List` container
     - Read `data-id` from `event.target.closest('[data-id]')`; call `deleteTransaction(id)` if found
     - _Requirements: 2.4_
 
-  - [ ] 10.2 Complete `handleFormSubmit(event)` wiring
+  - [x] 10.2 Complete `handleFormSubmit(event)` wiring
     - Prevent default, collect field values, call `validateForm`
     - On invalid: display inline errors per field, do not add transaction
     - On valid: clear inline errors, call `addTransaction`, reset form fields and reset category to first option
     - _Requirements: 1.3, 1.4, 1.5, 1.6, 1.7_
 
-  - [ ] 10.3 Implement `init()` and `DOMContentLoaded` bootstrap
+  - [x] 10.3 Implement `init()` and `DOMContentLoaded` bootstrap
     - `crypto.randomUUID` feature-detect; define `generateUUID` fallback using `Math.random` hex strings if unavailable
     - Call `loadTransactions()`, assign result to in-memory `transactions`
     - Call `renderAll()`
@@ -213,21 +213,21 @@ Tasks are ordered to build incrementally: scaffolding → HTML structure → CSS
     - Register `document.addEventListener('DOMContentLoaded', init)`
     - _Requirements: 5.3, 7.1, 7.5_
 
-- [ ] 11. Error handling edge cases
-  - [ ] 11.1 Handle `localStorage` write failure (quota exceeded)
+- [x] 11. Error handling edge cases
+  - [x] 11.1 Handle `localStorage` write failure (quota exceeded)
     - In `saveTransactions`, catch errors from `localStorage.setItem`
     - Revert in-memory `transactions` to the pre-mutation snapshot
     - Display a user-visible error message in the UI
     - _Requirements: (design error-handling table)_
 
-  - [ ] 11.2 Handle Chart.js CDN load failure
+  - [x] 11.2 Handle Chart.js CDN load failure
     - In `renderChart`, check `typeof Chart === 'undefined'`
     - If true, hide canvas and show a user-visible error message in the pie-chart section
     - Ensure the rest of the UI (form, list, balance) remains fully functional
     - _Requirements: 4.7_
 
-- [ ] 12. Testing setup and unit tests
-  - [ ] 12.1 Set up Vitest (or Jest) as a dev-only test runner
+- [x] 12. Testing setup and unit tests
+  - [x] 12.1 Set up Vitest (or Jest) as a dev-only test runner
     - Install Vitest and fast-check as `devDependencies` (or reference via CDN-equivalent for Node test environment)
     - Create `tests/` directory with a `vitest.config.js` (or `jest.config.js`)
     - Ensure `npm test` (or `npx vitest --run`) executes all test files
@@ -264,7 +264,7 @@ Tasks are ordered to build incrementally: scaffolding → HTML structure → CSS
     - Empty array JSON → returns `[]`
     - _Requirements: 5.5, 5.6_
 
-- [ ] 13. Final checkpoint — all tests and smoke checks
+- [x] 13. Final checkpoint — all tests and smoke checks
   - Ensure all unit and property tests pass, ask the user if questions arise.
 
 ---
