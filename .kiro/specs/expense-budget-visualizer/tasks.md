@@ -48,15 +48,15 @@ Tasks are ordered to build incrementally: scaffolding → HTML structure → CSS
     - Style the delete button per transaction row
     - _Requirements: 6.2, 6.3, 6.6_
 
-- [ ] 4. JS — Constants and Storage Layer
-  - [ ] 4.1 Implement the Constants section in `js/app.js`
+- [x] 4. JS — Constants and Storage Layer
+  - [x] 4.1 Implement the Constants section in `js/app.js`
     - Define `STORAGE_KEY = "expense_budget_visualizer_v1"`
     - Define `MAX_AMOUNT = 999_999_999.99`, `MIN_AMOUNT = 0.01`, `MAX_NAME_LENGTH = 100`, `TRUNCATE_LENGTH = 50`
     - Define `CATEGORIES = ['Food', 'Transport', 'Fun']`
     - Initialise the in-memory `transactions` array
     - _Requirements: 1.1, 1.2, 5.1_
 
-  - [ ] 4.2 Implement `loadTransactions` and `saveTransactions`
+  - [x] 4.2 Implement `loadTransactions` and `saveTransactions`
     - `loadTransactions`: reads `STORAGE_KEY`, parses JSON, discards entries missing any required field (`id`, `name`, `amount`, `category`, `createdAt`), logs a `console.error` per discarded entry, handles non-JSON gracefully (returns `[]` + `console.error`)
     - `saveTransactions(transactions)`: serialises to JSON and writes under `STORAGE_KEY`; wraps write in `try/catch` (quota handling covered in Task 10)
     - _Requirements: 5.1, 5.2, 5.4, 5.5, 5.6_
@@ -71,8 +71,8 @@ Tasks are ordered to build incrementally: scaffolding → HTML structure → CSS
     - **Validates: Requirements 5.6**
     - Use fast-check to generate a mixed array of valid and malformed objects; assert result contains exactly the valid subset
 
-- [ ] 5. JS — Validator
-  - [ ] 5.1 Implement `validateForm(name, amount, category)`
+- [x] 5. JS — Validator
+  - [x] 5.1 Implement `validateForm(name, amount, category)`
     - Returns `{ valid: boolean, errors: { name?, amount?, category? } }`
     - `name`: non-empty, length ≤ 100
     - `amount`: parseable as finite float in `[0.01, 999_999_999.99]`
@@ -80,7 +80,7 @@ Tasks are ordered to build incrementally: scaffolding → HTML structure → CSS
     - Pure function — no DOM access, no side effects
     - _Requirements: 1.3, 1.4, 1.5_
 
-  - [ ] 5.2 Wire inline error display into the form submit handler (stub)
+  - [x] 5.2 Wire inline error display into the form submit handler (stub)
     - Create a stub `handleFormSubmit` that calls `validateForm` and toggles the inline error `<span>` elements per field
     - Full wiring to mutations happens in Task 9
     - _Requirements: 1.3, 1.4, 1.5_
@@ -95,15 +95,15 @@ Tasks are ordered to build incrementally: scaffolding → HTML structure → CSS
     - **Validates: Requirements 1.1, 1.3**
     - Use fast-check to generate fully valid tuples; assert `result.valid === true` and `errors` object is empty
 
-- [ ] 6. JS — Transaction Mutations
-  - [ ] 6.1 Implement `addTransaction(name, amount, category)`
+- [x] 6. JS — Transaction Mutations
+  - [x] 6.1 Implement `addTransaction(name, amount, category)`
     - Generate UUID via `crypto.randomUUID()` (with `Math.random` fallback — see Task 10)
     - Capture `new Date().toISOString()` as `createdAt`
     - Push new transaction object onto in-memory `transactions` array
     - Call `saveTransactions()` then `renderAll()`
     - _Requirements: 1.6, 5.1_
 
-  - [ ] 6.2 Implement `deleteTransaction(id)`
+  - [x] 6.2 Implement `deleteTransaction(id)`
     - Filter in-memory `transactions` array to remove the entry with matching `id`
     - Call `saveTransactions()` then `renderAll()`
     - _Requirements: 2.4, 5.2_
@@ -118,17 +118,17 @@ Tasks are ordered to build incrementally: scaffolding → HTML structure → CSS
     - **Validates: Requirements 2.4, 5.2**
     - Use fast-check to generate a non-empty list and pick a random existing `id`; assert `list.length === n - 1` and deleted `id` absent
 
-- [ ] 7. JS — Formatting Utilities
-  - [ ] 7.1 Implement `formatCurrency(amount)`
+- [x] 7. JS — Formatting Utilities
+  - [x] 7.1 Implement `formatCurrency(amount)`
     - Returns a string with exactly two decimal places and a thousands-separator comma for values ≥ 1 000
     - Caps display at `999,999,999.99` (overflow handled in `renderBalance` — Task 8)
     - _Requirements: 3.4_
 
-  - [ ] 7.2 Implement `truncateName(name)`
+  - [x] 7.2 Implement `truncateName(name)`
     - Returns `name` unchanged if `name.length ≤ 50`; otherwise returns `name.slice(0, 50)`
     - _Requirements: 2.7_
 
-  - [ ] 7.3 Implement `computeChartData(transactions)`
+  - [x] 7.3 Implement `computeChartData(transactions)`
     - Aggregate amounts per category
     - Compute `percentages` as `(categoryTotal / grandTotal * 100)` rounded to two decimal places
     - Build `displayPercentages` strings; handle near-zero shares (< 0.05% displayed to four decimal places at 1 % minimum segment — see design)

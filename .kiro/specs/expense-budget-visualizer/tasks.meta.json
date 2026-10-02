@@ -81,6 +81,142 @@
         "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
         "timestamp": 1790898999174
       }
+    ],
+    "4.1 Implement the Constants section in `js/app.js`": [
+      {
+        "executionId": "842bea0b-350f-4f08-b3f5-1db3d4f630b3",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790899740430
+      },
+      {
+        "executionId": "842bea0b-350f-4f08-b3f5-1db3d4f630b3",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790899910583
+      }
+    ],
+    "4.2 Implement `loadTransactions` and `saveTransactions`": [
+      {
+        "executionId": "842bea0b-350f-4f08-b3f5-1db3d4f630b3",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790899914639
+      },
+      {
+        "executionId": "842bea0b-350f-4f08-b3f5-1db3d4f630b3",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790899920100
+      }
+    ],
+    "4. JS — Constants and Storage Layer": [
+      {
+        "executionId": "842bea0b-350f-4f08-b3f5-1db3d4f630b3",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790899920207
+      }
+    ],
+    "5.1 Implement `validateForm(name, amount, category)`": [
+      {
+        "executionId": "842bea0b-350f-4f08-b3f5-1db3d4f630b3",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790899924667
+      },
+      {
+        "executionId": "842bea0b-350f-4f08-b3f5-1db3d4f630b3",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790899984737
+      }
+    ],
+    "5.2 Wire inline error display into the form submit handler (stub)": [
+      {
+        "executionId": "842bea0b-350f-4f08-b3f5-1db3d4f630b3",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900006072
+      },
+      {
+        "executionId": "842bea0b-350f-4f08-b3f5-1db3d4f630b3",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900010480
+      }
+    ],
+    "5. JS — Validator": [
+      {
+        "executionId": "842bea0b-350f-4f08-b3f5-1db3d4f630b3",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900010700
+      }
+    ],
+    "6.1 Implement `addTransaction(name, amount, category)`": [
+      {
+        "executionId": "82bf67f6-b001-4190-8882-ffc7801d34ec",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900336614
+      },
+      {
+        "executionId": "82bf67f6-b001-4190-8882-ffc7801d34ec",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900459008
+      }
+    ],
+    "7.1 Implement `formatCurrency(amount)`": [
+      {
+        "executionId": "82bf67f6-b001-4190-8882-ffc7801d34ec",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900337101
+      },
+      {
+        "executionId": "82bf67f6-b001-4190-8882-ffc7801d34ec",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900468501
+      }
+    ],
+    "6.2 Implement `deleteTransaction(id)`": [
+      {
+        "executionId": "82bf67f6-b001-4190-8882-ffc7801d34ec",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900459093
+      },
+      {
+        "executionId": "82bf67f6-b001-4190-8882-ffc7801d34ec",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900463333
+      }
+    ],
+    "6. JS — Transaction Mutations": [
+      {
+        "executionId": "82bf67f6-b001-4190-8882-ffc7801d34ec",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900463483
+      }
+    ],
+    "7.2 Implement `truncateName(name)`": [
+      {
+        "executionId": "82bf67f6-b001-4190-8882-ffc7801d34ec",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900463935
+      },
+      {
+        "executionId": "82bf67f6-b001-4190-8882-ffc7801d34ec",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900469044
+      }
+    ],
+    "7.3 Implement `computeChartData(transactions)`": [
+      {
+        "executionId": "82bf67f6-b001-4190-8882-ffc7801d34ec",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900464423
+      },
+      {
+        "executionId": "82bf67f6-b001-4190-8882-ffc7801d34ec",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900469467
+      }
+    ],
+    "7. JS — Formatting Utilities": [
+      {
+        "executionId": "82bf67f6-b001-4190-8882-ffc7801d34ec",
+        "chatSessionId": "sess_305d4f4e-b13c-47dc-8c10-3b483e5bdaf6",
+        "timestamp": 1790900469569
+      }
     ]
   }
 }
