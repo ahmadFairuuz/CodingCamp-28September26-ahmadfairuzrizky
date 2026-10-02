@@ -1,0 +1,553 @@
+/* ==========================================================================
+   Expense & Budget Visualizer — Stylesheet
+   ==========================================================================
+   Sections:
+     1. Base & Reset
+     2. Layout
+     3. Balance Card
+     4. Form
+     5. Transaction List
+     6. Chart
+     7. Responsive (>= 768px)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Base & Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Color palette */
+  --color-bg:           #f4f6f9;
+  --color-surface:      #ffffff;
+  --color-border:       #dde2ea;
+  --color-accent:       #2563eb;       /* blue-600 */
+  --color-accent-hover: #1d4ed8;       /* blue-700 */
+  --color-text:         #1e2a3b;       /* near-black */
+  --color-text-muted:   #6b7a90;
+  --color-danger:       #dc2626;       /* red-600 */
+  --color-danger-hover: #b91c1c;       /* red-700 */
+  --color-warning:      #d97706;       /* amber-600 */
+  --color-success:      #16a34a;
+
+  /* Category badge colours */
+  --color-badge-food:       #dcfce7;   /* green-100 */
+  --color-badge-food-text:  #15803d;
+  --color-badge-transport:  #dbeafe;   /* blue-100 */
+  --color-badge-transport-text: #1d4ed8;
+  --color-badge-fun:        #fef9c3;   /* yellow-100 */
+  --color-badge-fun-text:   #a16207;
+
+  /* Typography */
+  --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", sans-serif;
+  --font-size-base: 15px;
+  --font-size-sm:   13px;
+  --font-size-lg:   1.125rem;
+  --font-size-xl:   1.5rem;
+  --font-size-2xl:  2rem;
+
+  /* Spacing */
+  --space-xs:  0.25rem;
+  --space-sm:  0.5rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2rem;
+
+  /* Radii & shadows */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.10), 0 2px 4px rgba(0, 0, 0, 0.06);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+}
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 1rem;         /* 15px — above the 14px minimum */
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  /* Reserve room for content to never cause horizontal scroll */
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+h2 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+
+/* ==========================================================================
+   2. Layout
+   ========================================================================== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-md);
+  /* Prevent any child from breaking out and causing horizontal scroll */
+  width: 100%;
+  min-width: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Every direct-child section fills the column */
+main > section {
+  width: 100%;
+  min-width: 0;          /* prevent flex/grid blow-out */
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+
+/* ==========================================================================
+   3. Balance Card
+   ========================================================================== */
+
+#balance-section {
+  /* Slightly more prominent than other cards */
+  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+  border-color: transparent;
+  box-shadow: var(--shadow-md);
+}
+
+#balance-section h1 {
+  color: #ffffff;
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-sm);
+}
+
+.balance-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+
+.balance-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.balance-value {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+#balance-amount {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  /* Prevent overflow on very long numbers */
+  overflow-wrap: anywhere;
+}
+
+.overflow-indicator {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: #fde68a;          /* amber-200 — visible on the blue gradient */
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+/* The [hidden] attribute hides the overflow indicator by default */
+.overflow-indicator[hidden] {
+  display: none;
+}
+
+
+/* ==========================================================================
+   4. Form
+   ========================================================================== */
+
+#form-section h2 {
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--space-sm);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.form-field:last-of-type {
+  margin-bottom: var(--space-lg);
+}
+
+.form-field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  min-height: 44px;         /* Req 6.7 — minimum touch target */
+  padding: 0.6rem 0.75rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+  /* Prevent inputs from overflowing on small screens */
+  max-width: 100%;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Removes the browser-default number input spinner arrows for a cleaner look */
+.form-field input[type="number"]::-webkit-inner-spin-button,
+.form-field input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.4;
+}
+
+/* Invalid state (set by JS when field has an error) */
+.form-field input.is-invalid,
+.form-field select.is-invalid {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+.field-error {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-danger);
+  /* Reserve minimum height so layout does not jump when error appears */
+  min-height: 1.2em;
+  line-height: 1.4;
+}
+
+.btn-submit {
+  display: block;
+  width: 100%;                /* Full-width on mobile — Req 6.5 */
+  min-height: 44px;           /* Req 6.7 */
+  padding: 0.65rem 1.25rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--color-accent);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+              box-shadow var(--transition-fast),
+              transform 80ms ease;
+  text-align: center;
+}
+
+.btn-submit:hover {
+  background-color: var(--color-accent-hover);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+}
+
+.btn-submit:active {
+  transform: translateY(1px);
+}
+
+.btn-submit:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+
+/* ==========================================================================
+   5. Transaction List
+   ========================================================================== */
+
+#transaction-section h2 {
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--space-sm);
+}
+
+#transaction-list {
+  list-style: none;
+  padding: 0;
+  max-height: 400px;          /* Scrollable container — Req 2.2 */
+  overflow-y: auto;
+  /* Subtle inset shadow to hint scrollability */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* WebKit scrollbar styling */
+#transaction-list::-webkit-scrollbar {
+  width: 6px;
+}
+#transaction-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+#transaction-list::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 3px;
+}
+
+/* Individual transaction row — added by JS (Task 8) */
+.transaction-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+  min-height: 52px;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+/* Name: grow to fill available space; truncate long text — Req 2.7 */
+.transaction-name {
+  flex: 1 1 0;
+  min-width: 0;                 /* allow flex child to shrink */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+/* Amount: bold, accent-colored, never wraps */
+.transaction-amount {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Category: small pill badge */
+.transaction-category {
+  display: inline-block;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  /* Default badge styling — JS may add a data-category attribute for specific colours */
+  background-color: #e5e7eb;
+  color: var(--color-text-muted);
+}
+
+/* Per-category badge colours using data attribute set by JS */
+.transaction-category[data-category="Food"] {
+  background-color: var(--color-badge-food);
+  color: var(--color-badge-food-text);
+}
+.transaction-category[data-category="Transport"] {
+  background-color: var(--color-badge-transport);
+  color: var(--color-badge-transport-text);
+}
+.transaction-category[data-category="Fun"] {
+  background-color: var(--color-badge-fun);
+  color: var(--color-badge-fun-text);
+}
+
+/* Delete button */
+.btn-delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 44px;              /* Req 6.7 */
+  min-height: 44px;             /* Req 6.7 */
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  transition: color var(--transition-fast),
+              background-color var(--transition-fast);
+}
+
+.btn-delete:hover {
+  color: var(--color-danger);
+  background-color: rgba(220, 38, 38, 0.08);
+}
+
+.btn-delete:focus-visible {
+  outline: 2px solid var(--color-danger);
+  outline-offset: 2px;
+}
+
+/* Empty state placeholder — shared by list and chart */
+.empty-state {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  padding: var(--space-lg) var(--space-md);
+}
+
+
+/* ==========================================================================
+   6. Chart
+   ========================================================================== */
+
+#chart-section h2 {
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--space-sm);
+}
+
+#spending-chart {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.chart-error {
+  color: var(--color-danger);
+  text-align: center;
+  font-size: 0.9rem;
+  padding: var(--space-md);
+  background-color: rgba(220, 38, 38, 0.06);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: var(--radius-md);
+}
+
+.chart-error[hidden] {
+  display: none;
+}
+
+
+/* ==========================================================================
+   7. Responsive — Two-column layout (>= 768px)
+   ========================================================================== */
+
+@media (min-width: 768px) {
+
+  /* Switch from flex column to two-column grid — Req 6.6 */
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  /* Full-width header spanning both columns — Req 6.6 */
+  #balance-section {
+    grid-column: 1 / -1;
+  }
+
+  /* Balance heading and amount larger now there is more space */
+  #balance-section h1 {
+    font-size: 1.75rem;
+  }
+
+  #balance-amount {
+    font-size: 2.5rem;
+  }
+
+  /* Form: left column (stays as-is — single column within its card) */
+  #form-section {
+    grid-column: 1 / 2;
+  }
+
+  /* Transaction list: right column */
+  #transaction-section {
+    grid-column: 2 / 3;
+  }
+
+  /* Transaction list can be taller on larger screens */
+  #transaction-list {
+    max-height: 500px;
+  }
+
+  /* Chart: full-width below the two columns — Req 6.6 */
+  #chart-section {
+    grid-column: 1 / -1;
+  }
+
+  /* Chart canvas: cap width so it does not become unwieldy at 1440px */
+  #spending-chart {
+    max-width: 480px;
+  }
+
+  /* Submit button: auto-width (no longer full-width) — Req 6.6 */
+  .btn-submit {
+    width: auto;
+    min-width: 160px;
+  }
+
+}
+
+
+/* ==========================================================================
+   8. Wide-screen safeguard (>= 1024px)
+   ========================================================================== */
+
+@media (min-width: 1024px) {
+
+  .container {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  main {
+    gap: var(--space-xl);
+  }
+
+  main > section {
+    padding: var(--space-xl);
+  }
+
+}
