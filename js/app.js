@@ -686,9 +686,19 @@ function renderChart(txns) {
     Transport: "#2563eb",
     Fun:       "#d97706",
   };
-  const backgroundColors = chartData.labels.map(
-    (label) => CATEGORY_COLORS[label] || "#6b7a90",
-  );
+
+  // Generate distinct colours for custom categories using a simple string hash
+  function getCategoryColor(label) {
+    if (CATEGORY_COLORS[label]) return CATEGORY_COLORS[label];
+    let hash = 0;
+    for (let i = 0; i < label.length; i++) {
+      hash = label.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const hue = Math.abs(hash) % 360;
+    return `hsl(${hue}, 70%, 50%)`;
+  }
+
+  const backgroundColors = chartData.labels.map(getCategoryColor);
 
   chartInstance = new Chart(canvas, {
     type: "pie",

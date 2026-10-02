@@ -73,6 +73,22 @@
   --transition-fast: 150ms ease;
 }
 
+/* Challenge 5: Dark Mode Variables */
+[data-theme="dark"] {
+  --color-bg:           #0f172a;
+  --color-surface:      #1e293b;
+  --color-border:       #334155;
+  --color-text:         #f8fafc;
+  --color-text-muted:   #94a3b8;
+  
+  --color-badge-food:       #14532d;
+  --color-badge-food-text:  #4ade80;
+  --color-badge-transport:  #1e3a8a;
+  --color-badge-transport-text: #60a5fa;
+  --color-badge-fun:        #713f12;
+  --color-badge-fun-text:   #facc15;
+}
+
 html {
   font-size: var(--font-size-base);
   scroll-behavior: smooth;
@@ -471,7 +487,381 @@ main > section {
 
 
 /* ==========================================================================
-   7. Responsive — Two-column layout (>= 768px)
+   7. Challenge 1 — Custom Category Controls
+   ========================================================================== */
+
+.custom-category-row {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.custom-category-row[hidden] {
+  display: none;
+}
+
+#custom-category-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.6rem 0.75rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+#custom-category-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.btn-add-category {
+  flex: 0 0 auto;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 1rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: var(--color-accent);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.btn-add-category:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.btn-toggle-custom-category {
+  align-self: flex-start;
+  margin-top: var(--space-xs);
+  min-height: 44px;
+  padding: 0.4rem 0.5rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.btn-toggle-custom-category:hover {
+  color: var(--color-accent-hover);
+}
+
+
+/* ==========================================================================
+   8. Challenge 3 — Sort Controls
+   ========================================================================== */
+
+.sort-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.sort-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  margin-right: var(--space-xs);
+}
+
+.btn-sort {
+  min-height: 44px;              /* Req 6.7 — touch target */
+  padding: 0.35rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  background-color: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--transition-fast),
+              background-color var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.btn-sort:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.btn-sort.active {
+  color: #ffffff;
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.btn-sort:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+
+/* ==========================================================================
+   9. Challenge 2 — Monthly Summary
+   ========================================================================== */
+
+#summary-section h2 {
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--space-sm);
+}
+
+.monthly-summary-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-height: 480px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.monthly-summary-list::-webkit-scrollbar {
+  width: 6px;
+}
+.monthly-summary-list::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 3px;
+}
+
+.month-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  background-color: var(--color-bg);
+}
+
+.month-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.month-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.month-total {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.month-breakdown {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.month-breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  font-size: 0.85rem;
+}
+
+.month-breakdown-cat {
+  color: var(--color-text-muted);
+}
+
+.month-breakdown-amt {
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+
+/* ==========================================================================
+   10. Challenge 4 — Spending Limit
+   ========================================================================== */
+
+.limit-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.limit-controls label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.limit-input {
+  min-height: 44px;              /* Req 6.7 */
+  width: 150px;
+  max-width: 100%;
+  padding: 0.4rem 0.6rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+.limit-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.limit-warning {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  color: #fde68a;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.limit-warning[hidden] {
+  display: none;
+}
+
+/* Over-limit state recolours the balance card red */
+#balance-section.balance-over-limit {
+  background: linear-gradient(135deg, #991b1b 0%, #dc2626 100%);
+}
+
+
+/* ==========================================================================
+   11. Challenge 5 — Theme Toggle
+   ========================================================================== */
+
+.theme-toggle-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--space-md);
+}
+
+.btn-theme-toggle {
+  min-height: 44px;              /* Req 6.7 */
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: color var(--transition-fast),
+              background-color var(--transition-fast),
+              border-color var(--transition-fast);
+}
+
+.btn-theme-toggle:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn-theme-toggle:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+
+/* ==========================================================================
+   12. Storage Error Banner
+   ========================================================================== */
+
+.storage-error {
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-danger);
+  background-color: rgba(220, 38, 38, 0.08);
+  border: 1px solid rgba(220, 38, 38, 0.25);
+  border-radius: var(--radius-md);
+}
+
+.storage-error[hidden] {
+  display: none;
+}
+
+
+/* ==========================================================================
+   13. Dark Mode Refinements
+   ========================================================================== */
+
+[data-theme="dark"] #balance-section {
+  background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 100%);
+}
+
+[data-theme="dark"] #balance-section.balance-over-limit {
+  background: linear-gradient(135deg, #7f1d1d 0%, #b91c1c 100%);
+}
+
+[data-theme="dark"] .transaction-category {
+  background-color: #334155;
+  color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .btn-delete:hover {
+  background-color: rgba(248, 113, 113, 0.18);
+}
+
+[data-theme="dark"] .month-card {
+  background-color: #0b1220;
+}
+
+[data-theme="dark"] .btn-theme-toggle {
+  box-shadow: none;
+}
+
+/* Smooth colour transition when switching themes */
+body,
+main > section,
+.month-card,
+.form-field input,
+.form-field select,
+#custom-category-input,
+.limit-input,
+.btn-sort,
+.btn-theme-toggle {
+  transition: background-color 200ms ease, color 200ms ease,
+              border-color 200ms ease;
+}
+
+
+/* ==========================================================================
+   14. Responsive — Two-column layout (>= 768px)
    ========================================================================== */
 
 @media (min-width: 768px) {
@@ -515,6 +905,11 @@ main > section {
 
   /* Chart: full-width below the two columns — Req 6.6 */
   #chart-section {
+    grid-column: 1 / -1;
+  }
+
+  /* Monthly Summary: full-width below the chart */
+  #summary-section {
     grid-column: 1 / -1;
   }
 
